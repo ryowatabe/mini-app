@@ -1,2 +1,20 @@
-%h1 Tweets#new
-%p Find me in app/views/tweets/new.html.haml
+/= form_with model: @tweet do |f|
+/  .row
+/    .input-field.col.s7
+/      %textarea#textarea1.materialize-textarea
+/      %label.active{:for => "textarea2"} Tweet
+/  .row
+/    .input-field.col.s6
+/      %input#first_name2.validate{:type => "text", :value => ""}/
+/      %label.active{:for => "first_name2"} image_url
+/  %a.waves-effect.waves-light.btn send
+
+.contents.row
+  .container
+    = form_tag('/tweets', method: :post) do
+      %h3
+        New Tweet
+      %input{:name => "title", :placeholder => "Title", :type => "text"}/
+      %input{:name => "image_url", :placeholder => "Image Url", :type => "text"}/
+      %textarea{:cols => "30", :name => "text", :placeholder => "text", :rows => "10"}
+      %input{:type => "submit", :value => "SENT"}/

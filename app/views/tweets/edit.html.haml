@@ -1,2 +1,9 @@
-%h1 Tweets#edit
-%p Find me in app/views/tweets/edit.html.haml
+.contents.row
+  /= form_with url: tweet_path, scope: :patch do
+    
+  = form_tag("/tweets/#{@tweet.id}", method: :patch ) do
+    %h3
+      編集する
+    %input{:autofocus => "true", :name => "image_url", :placeholder => "Image Url", :type => "text", :value => ""}/
+    %textarea{:cols => "30", :name => "text", :placeholder => "text", :rows => "10"} 
+    %input{:type => "submit", :value => "SENT"}/

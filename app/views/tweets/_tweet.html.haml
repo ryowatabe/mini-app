@@ -1,0 +1,18 @@
+.col.s12.m7
+  .cards
+    .card
+      .card-image
+        %img{src: "https://wired.jp/wp-content/uploads/2018/01/GettyImages-522585140.jpg"}/
+        %span.card-title
+          = tweet.title
+      .card-content
+        %p.black-text
+          = tweet.user.name
+        %p.black-text
+          = tweet.text
+        = if user_signed_in?
+          .card-action
+            = link_to edit_tweet_path(tweet[:id]) do
+              編集
+            = link_to tweet_path(tweet[:id]), method: :delete do
+              削除

@@ -1,2 +1,22 @@
-%h1 Tweets#index
-%p Find me in app/views/tweets/index.html.haml
+%body
+  %nav.blue.lighten-2
+    .nav-wrapper
+      %a.brand-logo.center{:href => "#!"} ツイッターのパクリアプリ
+      %ul.left.hide-on-med-and-down
+        - if user_signed_in?
+          %li
+            = link_to destroy_user_session_path, method: :delete do
+              sign out
+          %li
+            = link_to new_tweet_path do
+              New Tweet
+        - else
+          %li
+            = link_to new_user_session_path do
+              sign in
+          %li.active
+            = link_to new_user_registration_path do
+              new Registration
+    .content
+      - @tweets.each do |tweet|
+        = render "tweet",tweet: tweet
